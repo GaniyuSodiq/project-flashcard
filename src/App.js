@@ -50,7 +50,21 @@ function Intro() {
     </div>
   );
 }
-function Question() {}
+function Question() {
+  return (
+    <form className="form-box">
+      <label>
+        Question <br></br>
+        <input />
+      </label>
+      <label>
+        Answer <br></br>
+        <input />
+      </label>
+      <button className="btn">ADD</button>
+    </form>
+  );
+}
 
 function Flashcards() {
   const [selectedId, setSelectedId] = useState(null);
