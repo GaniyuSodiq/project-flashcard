@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { useState } from "react";
 
 const questionPool = [
   {
@@ -50,11 +51,22 @@ function Intro() {
   );
 }
 function Question() {}
+
 function Flashcards() {
+  const [selectedId, setSelectedId] = useState(null);
+
+  function cardClick(id) {
+    setSelectedId(id !== selectedId ? id : null);
+  }
   return (
     <div className="cards">
       {questionPool.map((q) => (
-        <div className="card">{q.question}</div>
+        <div
+          className={`card ${q.id === selectedId ? "answer" : ""}`}
+          onClick={() => cardClick(q.id)}
+        >
+          {q.id === selectedId ? q.answer : q.question}
+        </div>
       ))}
     </div>
   );
