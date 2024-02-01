@@ -50,6 +50,14 @@ function Intro() {
   );
 }
 function Question() {}
-function Flashcards() {}
+function Flashcards() {
+  return (
+    <div className="cards">
+      {questionPool.map((q) => (
+        <div className="card">{q.question}</div>
+      ))}
+    </div>
+  );
+}
 
 export default App;

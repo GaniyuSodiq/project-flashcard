@@ -2,6 +2,20 @@
   text-align: center;
 }
 
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card {
+  border: 1px green solid;
+  padding: 60px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
