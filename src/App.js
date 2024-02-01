@@ -51,15 +51,34 @@ function Intro() {
   );
 }
 function Question() {
+  const [qinput, setQinput] = useState("");
+  const [ainput, setAinput] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (qinput === "" || ainput === "") return;
+
+    const newQna = {
+      id: Date.now(),
+      question: qinput,
+      answer: ainput,
+    };
+
+    console.log(newQna);
+
+    setQinput("");
+    setAinput("");
+  }
+
   return (
-    <form className="form-box">
+    <form className="form-box" onSubmit={handleSubmit}>
       <label>
         Question <br></br>
-        <input />
+        <input value={qinput} onChange={(e) => setQinput(e.target.value)} />
       </label>
       <label>
         Answer <br></br>
-        <input />
+        <input value={ainput} onChange={(e) => setAinput(e.target.value)} />
       </label>
       <button className="btn">ADD</button>
     </form>
@@ -78,6 +97,7 @@ function Flashcards() {
         <div
           className={`card ${q.id === selectedId ? "answer" : ""}`}
           onClick={() => cardClick(q.id)}
+          key={q.id}
         >
           {q.id === selectedId ? q.answer : q.question}
         </div>
